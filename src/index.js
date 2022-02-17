@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import clayful from "clayful/client-js";
+
 import axios from "axios";
+import "./css/auth.css";
 
 clayful.config({
   client: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImI4YTY4YjMyYjEwOWM3NjlkMWM1M2RhYjdjMzgwZTg2NDQ1YmE4NDNmN2FhNzc3NjQ5MDUwZTg0MzY0YTViODEiLCJyb2xlIjoiY2xpZW50IiwiaWF0IjoxNjQ0OTcyNDI0LCJzdG9yZSI6IkxDQ1E1SEFWWDNZQS40OTdTVzREQkFDODkiLCJzdWIiOiJXTUpERUxERjlBMjcifQ.8BJWgVoIG6oeR0QebwmVepxqjz142z0tchtej5n8M00'

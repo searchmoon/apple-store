@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function RegisterPage() {
   return (
-    <div className="">
+    <div className="auth-wrapper">
       <h1>회원가입</h1>
       <form>
         <input type="email" name="email" placeholder="Apple ID" value="" />

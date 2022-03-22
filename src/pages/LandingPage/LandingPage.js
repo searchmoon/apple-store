@@ -28,7 +28,9 @@ Product.list(options, function(err, response) {
 
 });
   return (
-    <div>LandingPage</div>
+    <div className="pageWrapper">
+      LandingPage
+    </div>
   )
 }
 

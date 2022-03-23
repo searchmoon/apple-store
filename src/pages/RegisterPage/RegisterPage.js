@@ -54,7 +54,7 @@ console.log("payload", payload)
             value={password}
           />
           <button type="submit">회원가입</button>
-          <Link to="login" style={{ color: "gray", textDecoration: "none" }}>
+          <Link to="/login" style={{ color: "gray", textDecoration: "none" }}>
             {" "}
             이미 Apple ID가 있다면? 지금 로그인
           </Link>

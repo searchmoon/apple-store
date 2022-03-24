@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import clayful from "clayful/client-js";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function DetailProductPage() {
   const params = useParams();
@@ -25,7 +27,13 @@ function DetailProductPage() {
   }, []);
 
   return (
-    <div>
+    <div className="pageWrapper">
+      <Row>
+        <Col>
+          <img src={item.thumbnail?.url} alt={item.name}></img>
+        </Col>
+        <Col></Col>
+      </Row>
       <div dangerouslySetInnerHTML={{ __html: item.description }} />
       {/* { item.description}  */}
     </div>

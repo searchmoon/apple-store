@@ -22,7 +22,6 @@ function DetailProductPage() {
         return;
       }
       let data = result.data;
-      console.log(data);
       setItem(data);
     });
   }, []);

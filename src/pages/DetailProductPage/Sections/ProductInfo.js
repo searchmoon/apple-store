@@ -3,7 +3,7 @@ import "./ProductInfo.css";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import clayful from "clayful/client-js";
-import { Alert } from "bootstrap";
+import { Alert } from "react-bootstrap";
 
 function ProductInfo({ detail }) {
   const navigate = useNavigate();
@@ -29,32 +29,37 @@ function ProductInfo({ detail }) {
       navigate("/login");
       return;
     }
+
+    let Cart = clayful.Cart;
+
+    let payload = {
+      product: detail._id,
+      variant: detail.variants[0]._id,
+      quantity: count,
+      shippingMethod: detail.shipping.methods[0]._id,
+    };
+
+    let options = {
+      customer: localStorage.getItem("accessToken"),
+    };
+
+    Cart.addItemForMe(payload, options, function (err, result) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if(type === "cart") {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        navigate("/user/cart");
+      }, 1000);
+      }
+    });
   };
-
-  let Cart = clayful.Cart;
-
-  let payload = {
-    product: detail._id,
-    variant: detail.variants,
-    quantity: count,
-    shippingMethod: detail.shipping,
-  };
-
-  let options = {
-    customer: localStorage.getItem("accessToken"),
-  };
-
-  Cart.addItemForMe(payload, options, function (err, result) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-
-    setShow(true);
-    setTimeout(() => {
-      setShow(false);
-    }, 3000);
-  });
 
   return (
     <div>
@@ -99,7 +104,12 @@ function ProductInfo({ detail }) {
       >
         장바구니에 담기
       </div>
-      <div className="product-info-action">바로 구매</div>
+      <div 
+      onClick={() => handleActionClick("pay")}
+      className="product-info-action"
+      >
+        바로 구매
+        </div>
     </div>
   );
 }

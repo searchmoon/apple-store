@@ -23,7 +23,7 @@ function RegisterPage() {
       password: password,
       //email: email처럼 key와 value가 같을 경우 email만으로 생략해도 된다.
     };
-console.log("payload", payload)
+    console.log("payload", payload);
     Customer.createMe(payload, function (err, result) {
       if (err) {
         // Error case
@@ -35,7 +35,7 @@ console.log("payload", payload)
   };
 
   return (
-   <div className="pageWrapper">
+    <div className="pageWrapper">
       <div className="auth-wrapper">
         <h1>회원가입</h1>
         <form onSubmit={handleSubmit}>
@@ -60,7 +60,7 @@ console.log("payload", payload)
           </Link>
         </form>
       </div>
-   </div>
+    </div>
   );
 }
 

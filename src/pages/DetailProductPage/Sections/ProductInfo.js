@@ -11,7 +11,7 @@ function ProductInfo({ detail }) {
   const [show, setShow] = useState(false);
   const { isAuth } = useContext(AuthContext);
   // AuthContext.js에서 useContext를 사용해 isAuth를 가져옴
-  console.log("detail", detail);
+  
 
   const handleQuantityClick = (type) => {
     if (type === "plus") {

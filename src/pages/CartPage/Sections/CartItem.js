@@ -1,7 +1,7 @@
 import React from "react";
 import "./CartItem.css";
 
-function CartItem ({ item, index }) {
+function CartItem ({ item, buttonHandler, index }) {
   if (!item.product) return null;
   return (
     <div className="item">
@@ -17,6 +17,7 @@ function CartItem ({ item, index }) {
 
       <div className="quantity">
         <button 
+          onClick={() => buttonHandler("plus", index)}
           className="plus-btn"
           type="button"
           name="button"
@@ -25,6 +26,7 @@ function CartItem ({ item, index }) {
         </button>
         <input type="text" readOnly name="name" value={ item.quantity.raw } />
         <button 
+          onClick={() => buttonHandler("minus", index)}
           className="minus-btn"
           type="button"
           name="button"

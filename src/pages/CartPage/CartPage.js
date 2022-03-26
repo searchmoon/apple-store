@@ -25,6 +25,34 @@ function CartPage() {
     });
   }, []);
 
+  const buttonHandler = (type, index) => {
+    
+    let newCart = {...cart};
+    if (type === "plus") {
+      // 해당 아이템 가격 변경
+      newCart.items[index].price.original.raw += (
+        cart.items[index].price.original.raw / cart.items[index].quantity.raw
+      );
+      // 전체 아이템 가격 변경
+      newCart.total.amount.raw += (
+        cart.items[index].price.original.raw / cart.items[index].quantity.raw
+      );
+      // 해당 아이템 갯수 변경
+      newCart.items[index].quantity.raw += 1;
+    } else {
+      if(newCart.items[index].quantity.raw === 1) return;
+      newCart.items[index].price.original.raw -= (
+        cart.items[index].price.original.raw / cart.items[index].quantity.raw
+      );
+      newCart.total.amount.raw -= (
+        cart.items[index].price.original.raw / cart.items[index].quantity.raw
+      );
+      newCart.items[index].quantity.raw -= 1;
+    }
+
+    setCart(newCart);
+  };
+
   const items = cart.items;
   console.log("items", items)
   return (
@@ -38,6 +66,7 @@ function CartPage() {
                 key={ item._id }
                 item={ item }
                 index={ index }
+                buttonHandler={(type, index) => buttonHandler(type, index)}
               />;
             })
           ) : (

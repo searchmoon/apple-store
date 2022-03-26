@@ -26,6 +26,7 @@ function CartPage() {
   }, []);
 
   const items = cart.items;
+  console.log("items", items)
   return (
     <div className="pageWrapper">
       <div className="shopping-cart">
@@ -37,10 +38,10 @@ function CartPage() {
                 key={ item._id }
                 item={ item }
                 index={ index }
-              />
+              />;
             })
-          ): (
-              <p style={{ textAlign: "center", marginTop: "2rem"}}>
+          ) : (
+              <p style={{ textAlign: "center", marginTop: "2rem" }}>
                 카트에 상품이 하나도 없습니다.
               </p>
           )}

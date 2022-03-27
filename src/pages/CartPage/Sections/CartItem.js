@@ -1,7 +1,7 @@
 import React from "react";
 import "./CartItem.css";
 
-function CartItem ({ item, buttonHandler, index }) {
+function CartItem ({ item, buttonHandler, index, deleteItemHandler }) {
   if (!item.product) return null;
   return (
     <div className="item">
@@ -37,7 +37,7 @@ function CartItem ({ item, buttonHandler, index }) {
       <div className="total-price">₩ { item.price.original.raw }</div>
       
       <div className="buttons">
-        <span className="delete-btn">X</span>
+        <span className="delete-btn" onClick={deleteItemHandler(item._id, item.price.original.raw)}>X</span>
       </div>
     </div>
   )
